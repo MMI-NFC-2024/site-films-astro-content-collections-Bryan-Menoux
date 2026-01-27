@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { formatDate } from "../../helper.ts";
+import { Image } from "astro:assets";
+import placeholder from "../../assets/images/placeholder.png";
+
+export async function getStaticPaths() {
+  const films = await getCollection("films");
+  return films.map((film) => ({
+    params: { id: film.id },
+    props: { film },
+  }));
+}
+
+const { film } = Astro.props;
+const {Content} = await render(film);
+---
+
+
+<Layout title={film.data.titre}>
+    <a href="/films">Retourner aux films</a>
+    <h1>{film.data.titre}</h1>
+    <p>{formatDate(film.data.dateDeSortie)}</p>
+    <Image src={film.data.image || placeholder} alt={film.data.titre} class="w-64 h-auto" />
+    <p>{film.data.genres?.join(", ")}</p>
+    <Content />
+</Layout>

@@ -4,7 +4,7 @@ role: Acteur principal
 description: Acteur canadien célèbre pour son humour, sa polyvalence et ses rôles dans des films d'action et de comédie, notamment Deadpool.
 age: 47
 dateDeNaissance: 1976-10-23
-image: ../../assets/images/ryanreynolds.webp
+image: ../../assets/images/personnes/ryanreynolds.webp
 professions: 
     - acteur
     - scénariste

@@ -11,9 +11,23 @@ const personnes = defineCollection({
     age: z.number(),
     dateDeNaissance: date(),
     image: image().optional(),
-    // Ajout d'un champ professions qui est un tableau d'énumérations et si un champ est mauvais, il n'est juste pas affiché
     professions: z.array(z.enum(["acteur", "réalisateur", "scénariste", "producteur"])).optional(),
   })
 });
 
-export const collections = { personnes };
+
+const films = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/films" }),
+  schema: ({ image }) => z.object({
+    titre: z.string(),
+    dateDeSortie: date(),
+    image: image().optional(),
+    genres: z.array(z.enum(["drame", "comédie", "action", "horreur", "science-fiction", "documentaire"])).optional(),
+    pays_origine: z.array(z.enum(["France", "États-Unis", "Royaume-Uni", "Canada", "Allemagne", "Japon"])).optional(),
+  })
+});
+
+export const collections = {
+  personnes,
+  films,
+};

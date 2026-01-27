@@ -1,20 +1,20 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-const personnes = await getCollection("personnes");
+const films = await getCollection("films");
 
 
 ---
 
-<Layout title="Personnes">
+<Layout title="Films">
     <a href="/">Retourner à l'accueil</a>
-  <h1>Liste des Personnes</h1>
+  <h1>Liste des Films</h1>
   <nav>
     <ul>
       {
-        personnes.map((personne) => (
+        films.map((film) => (
           <li>
-            <a href={`/personnes/${personne.id}`}>{personne.data.nom}</a>
+            <a href={`/films/${film.id}`}>{film.data.titre}</a>
           </li>
         ))
       }
