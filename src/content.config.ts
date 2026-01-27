@@ -20,8 +20,10 @@ const films = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/data/films" }),
   schema: ({ image }) => z.object({
     titre: z.string(),
+    synopsis: z.string(),
     dateDeSortie: date(),
     image: image().optional(),
+    realisateur: z.string(),
     genres: z.array(z.enum(["drame", "comédie", "action", "horreur", "science-fiction", "documentaire"])).optional(),
     pays_origine: z.array(z.enum(["France", "États-Unis", "Royaume-Uni", "Canada", "Allemagne", "Japon"])).optional(),
   })
