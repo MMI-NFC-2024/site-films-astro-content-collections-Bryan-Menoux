@@ -9,6 +9,9 @@ genres:
   - science-fiction
 pays_origine:
   - États-Unis
+producteurs:
+  - kevin-feige
+  - avi-arad
 ---
 
 # Iron Man

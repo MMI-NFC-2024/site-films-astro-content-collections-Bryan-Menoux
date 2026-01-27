@@ -4,6 +4,9 @@ import Layout from "../../layouts/Layout.astro";
 import { formatDate } from "../../helper.ts";
 import { Image } from "astro:assets";
 import placeholder from "../../assets/images/placeholder.png";
+import { getEntries } from "astro:content";
+import LinkPersonne from "../../components/LinkPersonne.astro";
+import { getEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const films = await getCollection("films");
@@ -14,15 +17,98 @@ export async function getStaticPaths() {
 }
 
 const { film } = Astro.props;
-const {Content} = await render(film);
+const { Content } = await render(film);
+
+const realisateur = await getEntry(film.data.realisateur);
+console.log(realisateur);
+
 ---
 
-
 <Layout title={film.data.titre}>
-    <a href="/films">Retourner aux films</a>
-    <h1>{film.data.titre}</h1>
-    <p>{formatDate(film.data.dateDeSortie)}</p>
-    <Image src={film.data.image || placeholder} alt={film.data.titre} class="w-64 h-auto" />
-    <p>{film.data.genres?.join(", ")}</p>
-    <Content />
+  <!-- Hero de la page -->
+  <div class="bg-gray-50 py-12 mb-8">
+    <div class="container mx-auto px-4">
+      <a
+        href="/films"
+        class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8"
+      >
+        ← Retourner aux films
+      </a>
+      <div class="flex flex-col md:flex-row items-start gap-8">
+        <div class="shrink-0">
+          <Image
+            src={film.data.image || placeholder}
+            alt={film.data.titre}
+            class="w-40 h-60 object-cover rounded-lg shadow-md"
+          />
+        </div>
+        <div class="flex-1">
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            {film.data.titre}
+          </h1>
+          <p class="text-lg text-gray-600 mb-4">
+            {formatDate(film.data.dateDeSortie)}
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            {
+              film.data.genres?.map((genre) => (
+                <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">
+                  {genre}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disposition en Grille -->
+  <div class="container mx-auto px-4 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Synopsis -->
+      <div
+        class="md:col-span-2 bg-white rounded-lg shadow-sm border border-gray-200 py-8 px-6"
+      >
+        <h2 class="text-xl font-semibold text-gray-900 mb-3">Synopsis</h2>
+        <p class="text-gray-700 leading-relaxed">{film.data.synopsis}</p>
+      </div>
+
+      <!-- Réalisateur -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Réalisateur</h3>
+        <p class="text-gray-700">
+          <a href={`/personnes/${realisateur.id}`}>{realisateur.data.nom}</a>
+        </p>
+      </div>
+
+      <!-- Date de sortie -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Date de sortie</h3>
+        <p class="text-gray-700">{formatDate(film.data.dateDeSortie)}</p>
+      </div>
+
+      <!-- Pays d'origine -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Pays d'origine</h3>
+        <p class="text-gray-700">{film.data.pays_origine?.join(", ")}</p>
+      </div>
+      <!-- Producteurs -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Producteurs</h3>
+        <p class="text-gray-700">
+          {
+            ((await getEntries(film.data.producteurs)).map(prod => (<LinkPersonne personne={prod} />)).reduce((prev, curr, currentIndex) => [prev, currentIndex < film.data.producteurs!.length - 1 ? ", " : " et ", curr]))
+          }
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenu Complet du markdown -->
+  <div class="container mx-auto px-4">
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+      <Content />
+    </div>
+  </div>
 </Layout>
