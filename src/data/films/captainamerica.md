@@ -3,7 +3,7 @@ titre: "Captain America: The First Avenger"
 synopsis: Pendant la Seconde Guerre mondiale, Steve Rogers, un jeune homme frêle, est transformé en super-soldat par un sérum expérimental. Devenu Captain America, il doit arrêter le redoutable Red Skull et son organisation HYDRA.
 dateDeSortie: 2011-07-22
 image: ../../assets/images/films/captainamerica.jpg
-realisateur: Joe Johnston
+realisateur: joe-johnston
 genres:
   - action
   - science-fiction

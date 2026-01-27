@@ -20,8 +20,8 @@ const { film } = Astro.props;
 const { Content } = await render(film);
 
 const realisateur = await getEntry(film.data.realisateur);
-console.log(realisateur);
-
+const acteurs = await getEntries(film.data.roles?.map(role => role.acteur) || []);
+console.log(acteurs);
 ---
 
 <Layout title={film.data.titre}>
@@ -68,7 +68,7 @@ console.log(realisateur);
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <!-- Synopsis -->
       <div
-        class="md:col-span-2 bg-white rounded-lg shadow-sm border border-gray-200 py-8 px-6"
+        class:list={{ 'md:col-span-1!': !!realisateur }} class="md:col-span-2 bg-white rounded-lg shadow-sm border border-gray-200 py-8 px-6"
       >
         <h2 class="text-xl font-semibold text-gray-900 mb-3">Synopsis</h2>
         <p class="text-gray-700 leading-relaxed">{film.data.synopsis}</p>
@@ -79,7 +79,6 @@ console.log(realisateur);
         <h3 class="text-lg font-medium text-gray-900 mb-2">Réalisateur</h3>
         <p class="text-gray-700">
           <a href={`/personnes/${realisateur.id}`}>{realisateur.data.nom}</a>
-        </p>
       </div>
 
       <!-- Date de sortie -->

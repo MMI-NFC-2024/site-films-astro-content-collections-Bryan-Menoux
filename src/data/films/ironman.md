@@ -3,7 +3,7 @@ titre: Iron Man
 synopsis: Tony Stark, un brillant inventeur et industriel milliardaire, est capturé par des terroristes. Pour s'échapper, il construit une armure high-tech qui lui donne des pouvoirs surhumains. De retour aux États-Unis, il décide d'utiliser sa création pour combattre le crime et protéger le monde.
 dateDeSortie: 2008-05-02
 image: ../../assets/images/films/ironman.jpg
-realisateur: Jon Favreau
+realisateur: jon-favreau
 genres:
   - action
   - science-fiction

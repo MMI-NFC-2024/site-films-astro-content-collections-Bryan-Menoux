@@ -3,7 +3,7 @@ titre: The Avengers
 synopsis: Lorsque Nick Fury, le directeur du SHIELD, arrive pour avertir Tony Stark qu'un ennemi inattendu arrive de l'espace pour envahir la Terre, Iron Man, Captain America, Thor, Hulk, Black Widow et Hawkeye doivent former une équipe pour arrêter les plans du vil Loki.
 dateDeSortie: 2012-05-04
 image: ../../assets/images/films/avangers.jpg
-realisateur: Joss Whedon
+realisateur: joss-whedon
 genres:
   - action
   - science-fiction
@@ -11,6 +11,8 @@ pays_origine:
   - États-Unis
 producteurs:
   - kevin-feige
+
+
 ---
 
 # The Avengers

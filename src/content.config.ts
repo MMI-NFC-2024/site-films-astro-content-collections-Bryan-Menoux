@@ -27,6 +27,10 @@ const films = defineCollection({
     pays_origine: z.array(z.enum(["France", "États-Unis", "Royaume-Uni", "Canada", "Allemagne", "Japon"])).optional(),
     realisateur: reference("personnes"),
     producteurs: z.array(reference("personnes")),
+    roles: z.object({
+      acteur: reference("personnes"),
+      nom_role: z.string(),
+    }).array().optional(),
   })
 });
 

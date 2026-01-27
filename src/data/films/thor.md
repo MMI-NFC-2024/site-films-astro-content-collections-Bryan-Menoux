@@ -3,7 +3,7 @@ titre: Thor
 synopsis: Le puissant Thor est banni de son royaume divin par son père Odin et envoyé sur Terre. Là, il doit apprendre l'humilité et combattre les forces du mal pour regagner son marteau Mjolnir.
 dateDeSortie: 2011-05-06
 image: ../../assets/images/films/thor.webp
-realisateur: Kenneth Branagh
+realisateur: kenneth-branagh
 genres:
   - action
   - science-fiction

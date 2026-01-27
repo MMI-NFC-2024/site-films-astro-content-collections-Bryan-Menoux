@@ -3,7 +3,7 @@ titre: Black Panther
 synopsis: T'Challa, roi du Wakanda, doit défendre son trône contre des challengers après la mort de son père. Il affronte son cousin Killmonger dans une lutte pour le pouvoir et l'avenir de son royaume.
 dateDeSortie: 2018-02-16
 image: ../../assets/images/films/blackpanther.jpg
-realisateur: Ryan Coogler
+realisateur: ryan-coogler
 genres:
   - action
   - science-fiction

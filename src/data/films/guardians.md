@@ -3,7 +3,7 @@ titre: Guardians of the Galaxy
 synopsis: Peter Quill, un aventurier interstellaire, forme une équipe improbable avec une bande de hors-la-loi pour arrêter un puissant ennemi qui menace l'univers.
 dateDeSortie: 2014-08-01
 image: ../../assets/images/films/guardians.jpg
-realisateur: James Gunn
+realisateur: james-gunn
 genres:
   - action
   - science-fiction
