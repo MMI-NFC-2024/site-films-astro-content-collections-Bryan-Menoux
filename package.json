@@ -9,6 +9,23 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.16.15"
-  }
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.16.15",
+    "tailwindcss": "^4.1.18"
+  },
+  "description": "```sh npm create astro@latest -- --template minimal ```",
+  "main": "index.js",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MMI-NFC-2024/site-films-astro-content-collections-Bryan-Menoux.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MMI-NFC-2024/site-films-astro-content-collections-Bryan-Menoux/issues"
+  },
+  "homepage": "https://github.com/MMI-NFC-2024/site-films-astro-content-collections-Bryan-Menoux#readme"
 }
