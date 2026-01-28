@@ -1,14 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import hero from "../assets/images/films/ironman-hero.jpg";
+
+
+
+const films = await getCollection("films");
+const personnes = await getCollection("personnes");
 ---
 
 <Layout title="Accueil">
-  <ul>
-    <li>
-      <a href="/personnes">personnes</a>
-    </li>
-    <li>
-      <a href="/films">films</a>
-    </li>
-  </ul>
+  <div class="w-full h-screen overflow-hidden">
+    <img src={hero.src} alt="Ironman Hero Image" class="w-full h-full object-cover object-top" />
+  </div>
 </Layout>

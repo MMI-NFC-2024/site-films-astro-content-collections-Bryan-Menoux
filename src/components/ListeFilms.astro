@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content";
+import LinkFilms from "./LinkFilms.astro";
+
+interface Props {
+  filmsRealised: CollectionEntry<"films">[];
+  filmsProduced: CollectionEntry<"films">[];
+  filmsActedIn: CollectionEntry<"films">[];
+}
+
+const { filmsRealised, filmsProduced, filmsActedIn } = Astro.props;
+---
+
+{
+  filmsRealised.map((film, index) => (
+    <>
+      {index === 0 ? "Films réalisés :" : ""}
+      <LinkFilms film={film} />
+      {index < filmsRealised.length - 1 ? ", " : ""}
+    </>
+  ))
+}
+{
+  filmsProduced.map((film, index) => (
+    <>
+      {index === 0 ? "Films produits :" : ""}
+      <LinkFilms film={film} />
+      {index < filmsProduced.length - 1 ? ", " : ""}
+    </>
+  ))
+}
+{
+  filmsActedIn.map((film, index) => (
+    <>
+      {index === 0 ? "Films joués :" : ""}
+      <LinkFilms film={film} />
+      {index < filmsActedIn.length - 1 ? ", " : ""}
+    </>
+  ))
+}

@@ -9,16 +9,40 @@ const films = await getCollection("films");
 ---
 
 <Layout title="Films">
-    <a href="/" class="inline-block mb-4 text-blue-600 hover:text-blue-800 ml-32 mt-32">← Retourner à l'accueil</a>
-    <h1 class="text-4xl uppercase font-bold mb-6 mx-auto max-w-7xl">Liste des Films</h1>
-    <div class="grid grid-cols-3 gap-4 mx-auto max-w-7xl">
+  <a
+    href="/"
+    class="inline-block mb-4 text-blue-600 hover:text-blue-800 ml-32 mt-32 sticky top-24"
+    >← Retourner à l'accueil</a
+  >
+  <h1 class="text-4xl uppercase font-bold mb-6 mx-auto max-w-7xl">
+    Liste des Films
+  </h1>
+  <div class="grid grid-cols-3 gap-4 mx-auto max-w-7xl">
     {
       films.map((film) => (
-        <div id="affiche-film" class="border border-gray-300 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-          <Image src={film.data.image || placeholder} alt={film.data.titre} class="w-full h-auto mb-2 rounded" />
-          <h2 class="text-xl font-semibold mb-1"><a href={`/films/${film.id}`} class="text-blue-600 hover:text-blue-800">{film.data.titre}</a></h2>
-          <p class="text-gray-600 mb-1">{formatDate(film.data.dateDeSortie)}</p>
-          <p class="text-gray-500">{film.data.genres?.join(", ")}</p>
+        <div
+          id="affiche-film"
+          class="flex flex-col border border-gray-300 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+        >
+          <Image
+            src={film.data.image || placeholder}
+            alt={film.data.titre}
+            class="w-full h-full object-cover rounded"
+          />
+          <div class="flex flex-col mt-8">
+            <h2 class="text-xl font-semibold mb-1">
+              <a
+                href={`/films/${film.id}`}
+                class="text-blue-600 hover:text-blue-800"
+              >
+                {film.data.titre}
+              </a>
+            </h2>
+            <p class="text-gray-600 mb-1">
+              {formatDate(film.data.dateDeSortie)}
+            </p>
+            <p class="text-gray-500">{film.data.genres?.join(", ")}</p>
+          </div>
         </div>
       ))
     }
@@ -26,16 +50,16 @@ const films = await getCollection("films");
 </Layout>
 
 <script>
-    // Petit script qui récupère chaque div des affiches pour mettre un lien directement sur l'image 
-    const articles = document.querySelectorAll('#affiche-film');
-    articles.forEach(article => {
-        const link = article.querySelector('a');
-        const image = article.querySelector('img');
-        if (link && image) {
-            image.style.cursor = 'pointer';
-            image.addEventListener('click', () => {
-                window.location.href = link.href;
-            });
-        }
-    });
+  // Petit script qui récupère chaque div des affiches pour mettre un lien directement sur l'image
+  const articles = document.querySelectorAll("#affiche-film");
+  articles.forEach((article) => {
+    const link = article.querySelector("a");
+    const image = article.querySelector("img");
+    if (link && image) {
+      image.style.cursor = "pointer";
+      image.addEventListener("click", () => {
+        window.location.href = link.href;
+      });
+    }
+  });
 </script>

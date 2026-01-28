@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { formatDate } from "../../helper.ts";
 import Image from "astro/components/Image.astro";
+import ListeFilms from "../../components/ListeFilms.astro";
 
 import placeHolder from "../../assets/images/placeholder.png";
 
@@ -16,6 +17,30 @@ export async function getStaticPaths() {
 
 const { personne } = Astro.props;
 const {Content} = await render(personne);
+
+const films = await getCollection("films");
+let filmsRealised: any[] = [];
+let filmsProduced: any[] = [];
+let filmsActedIn: any[] = [];
+
+films.filter((film) => {
+  // Si films réalisés, ajouter à la liste des films réalisés
+  if (film.data.realisateur?.id === personne.id) {
+    filmsRealised.push(film);
+    return true;
+  };
+  // Si films produits, ajouter à la liste des films produits
+  if (film.data.producteurs?.some(prod => prod.id === personne.id)) {
+    filmsProduced.push(film);
+    return true;
+  };
+  // Si films où la personne a joué, ajouter à la liste des films joués
+  if (film.data.roles?.some(role => role.acteur.id === personne.id)) {
+    filmsActedIn.push(film);
+    return true;
+  };
+  return false;
+});
 ---
 
 
@@ -27,6 +52,7 @@ const {Content} = await render(personne);
         ← Retourner aux personnes
       </a>
     <h1>{personne.data.nom}</h1>
+    <ListeFilms filmsRealised={filmsRealised} filmsProduced={filmsProduced} filmsActedIn={filmsActedIn}></ListeFilms>
     <Image 
         src={personne.data.image ? personne.data.image : placeHolder} 
         alt={personne.data.nom} 
