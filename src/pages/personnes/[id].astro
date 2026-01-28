@@ -23,43 +23,98 @@ let filmsRealised: any[] = [];
 let filmsProduced: any[] = [];
 let filmsActedIn: any[] = [];
 
-films.filter((film) => {
+films.forEach((film) => {
   // Si films réalisés, ajouter à la liste des films réalisés
   if (film.data.realisateur?.id === personne.id) {
     filmsRealised.push(film);
-    return true;
   };
   // Si films produits, ajouter à la liste des films produits
   if (film.data.producteurs?.some(prod => prod.id === personne.id)) {
     filmsProduced.push(film);
-    return true;
   };
   // Si films où la personne a joué, ajouter à la liste des films joués
   if (film.data.roles?.some(role => role.acteur.id === personne.id)) {
     filmsActedIn.push(film);
-    return true;
   };
-  return false;
+
 });
 ---
 
-
 <Layout title={personne.data.nom}>
-    <a
+  <!-- Hero de la page -->
+  <div class="bg-gray-50 py-12 mb-8 pt-32">
+    <div class="container mx-auto px-4">
+      <a
         href="/personnes"
         class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8 hover:underline"
       >
         ← Retourner aux personnes
       </a>
-    <h1>{personne.data.nom}</h1>
-    <ListeFilms filmsRealised={filmsRealised} filmsProduced={filmsProduced} filmsActedIn={filmsActedIn}></ListeFilms>
-    <Image 
-        src={personne.data.image ? personne.data.image : placeHolder} 
-        alt={personne.data.nom} 
-        width="300" 
-        height="450"
-    />
-    <p>{formatDate(personne.data.dateDeNaissance)}</p>
-    <p>{personne.data.professions?.join(", ")}</p>
-    <Content />
-</Layout>
+      <div class="flex flex-col md:flex-row items-start gap-8">
+        <div class="shrink-0">
+          <Image
+            src={personne.data.image ? personne.data.image : placeHolder}
+            alt={personne.data.nom}
+            width="300"
+            height="450"
+            class="rounded-lg shadow-md"
+          />
+        </div>
+        <div class="flex-1">
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            {personne.data.nom}
+          </h1>
+          <p class="text-lg text-gray-600 mb-4">
+            {personne.data.role}
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            {
+              personne.data.professions?.map((profession) => (
+                <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">
+                  {profession}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disposition en Grille -->
+  <div class="container mx-auto px-4 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Description -->
+      <div
+        class="bg-white rounded-lg shadow-sm border border-gray-200 py-8 px-6 md:col-span-2"
+      >
+        <h2 class="text-xl font-semibold text-gray-900 mb-3">Description</h2>
+        <p class="text-gray-700 leading-relaxed">{personne.data.description}</p>
+      </div>
+
+      <!-- Date de naissance -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Date de naissance</h3>
+        <p class="text-gray-700">{formatDate(personne.data.dateDeNaissance)}</p>
+      </div>
+
+      <!-- Âge -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Âge</h3>
+        <p class="text-gray-700">{personne.data.age} ans</p>
+      </div>
+
+      <!-- Films associés -->
+      <div class="bg-white text-gray-800 rounded-lg shadow-sm border border-gray-200 p-6 md:col-span-2">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Films associés</h3>
+        <ListeFilms personne={personne} filmsRealised={filmsRealised} filmsProduced={filmsProduced} filmsActedIn={filmsActedIn} />
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenu Complet du markdown -->
+  <div class="container mx-auto px-4">
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-gray-800">
+      <Content />
+    </div>
+  </div>

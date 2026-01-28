@@ -1,40 +1,204 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import LinkFilms from "./LinkFilms.astro";
+import { Image } from "astro:assets";
+import placeHolder from "../assets/images/placeholder.png";
 
 interface Props {
+  personne: CollectionEntry<"personnes">;
   filmsRealised: CollectionEntry<"films">[];
   filmsProduced: CollectionEntry<"films">[];
   filmsActedIn: CollectionEntry<"films">[];
 }
 
+const personne = Astro.props.personne;
 const { filmsRealised, filmsProduced, filmsActedIn } = Astro.props;
+const nbFilmsActedIn = filmsActedIn.length;
 ---
 
-{
-  filmsRealised.map((film, index) => (
-    <>
-      {index === 0 ? "Films réalisés : " : ""}
-      <LinkFilms film={film} />
-      {index < filmsRealised.length - 1 ? ", " : ""}
-    </>
-  ))
-}
-{
-  filmsProduced.map((film, index) => (
-    <>
-      {index === 0 ? "Films produits : " : ""}
-      <LinkFilms film={film} />
-      {index < filmsProduced.length - 1 ? ", " : ""}
-    </>
-  ))
-}
-{
-  filmsActedIn.map((film, index) => (
-    <>
-      {index === 0 ? "Films joués : " : ""}
-      <LinkFilms film={film} />
-      {index < filmsActedIn.length - 1 ? ", " : ""}
-    </>
-  ))
-}
+<div class="space-y-8">
+  <!-- Films réalisés -->
+  {
+    filmsRealised.length > 0 && (
+      <div>
+        <p class="text-gray-700 mb-2">
+          <span class="font-medium">Films réalisés :</span>{" "}
+          {filmsRealised.map((film, index) => (
+            <>
+              <LinkFilms film={film} />
+              {index < filmsRealised.length - 1 ? ", " : ""}
+            </>
+          ))}
+        </p>
+      </div>
+    )
+  }
+
+  <!-- Films produits -->
+  {
+    filmsProduced.length > 0 && (
+      <div>
+        <p class="text-gray-700 mb-2">
+          <span class="font-medium">Films produits :</span>{" "}
+          {filmsProduced.map((film, index) => (
+            <>
+              <LinkFilms film={film} />
+              {index < filmsProduced.length - 1 ? ", " : ""}
+            </>
+          ))}
+        </p>
+      </div>
+    )
+  }
+
+  <!-- Films joués -->
+  {
+    filmsActedIn.length > 0 && (
+      <div class="relative">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="w-2 h-2 bg-purple-500 rounded-full" />
+          Films joués
+        </h3>
+
+        {nbFilmsActedIn > 3 ? (
+          <>
+            {/* Bouton gauche */}
+            <button
+              id="btnLeft"
+              class="absolute -left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-200 shadow-lg backdrop-blur-sm"
+              aria-label="Films précédents"
+            >
+              ←
+            </button>
+          </>
+        ) : null}
+
+        {/* Conteneur scrollable - 3 éléments visibles */}
+        <div id="filmsContainer" class="overflow-hidden pr-16">
+          <div
+            class="flex gap-6 transition-transform duration-300 ease-in-out"
+            id="filmsTrack"
+          >
+            {filmsActedIn.map((film) => (
+              <div class="shrink-0 w-1/3 group bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="aspect-2/3 overflow-hidden">
+                  <Image
+                    src={film.data.image ? film.data.image : placeHolder}
+                    alt={film.data.titre}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div class="p-4">
+                  <h4 class="font-medium text-gray-900 mb-1 line-clamp-2">
+                    <LinkFilms film={film} />
+                  </h4>
+                  {film.data.roles?.find(
+                    (role) => role.acteur.id === personne.id,
+                  ) && (
+                    <p class="text-xs text-gray-500 mt-1">
+                      A joué le rôle de :
+                      {
+                        film.data.roles.find(
+                          (role) => role.acteur.id === personne.id,
+                        )?.nom_role
+                      }
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {
+          nbFilmsActedIn > 3 ? (
+            <>
+              {/* Bouton droit */}
+              <button
+                id="btnRight"
+                class="absolute -right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-200 shadow-lg backdrop-blur-sm"
+                aria-label="Films suivants"
+              >
+                →
+              </button>
+            </>
+          ) : null
+        }
+      </div>
+    )
+  }
+</div>
+
+<script>
+  // Fonction d'initialisation du carousel
+  function initCarousel() {
+    const btnLeft = document.querySelector("#btnLeft") as HTMLElement | null;
+    const btnRight = document.querySelector("#btnRight") as HTMLElement | null;
+    const track = document.querySelector("#filmsTrack") as HTMLElement | null;
+
+    if (!btnLeft || !btnRight || !track) return;
+
+    const films = track.children;
+    const totalFilms = films.length;
+    const filmsPerView = 3;
+    const filmElement = films[0] as HTMLElement;
+    const filmWidth = filmElement ? filmElement.offsetWidth : 256; // fallback
+    const gap = 24;
+
+    let currentIndex = 0;
+    const maxIndex = Math.max(0, totalFilms - filmsPerView);
+
+    // Fonction pour mettre à jour la position
+    function updatePosition() {
+      const translateX = -currentIndex * (filmWidth + gap);
+      track!.style.transform = `translateX(${translateX}px)`;
+
+      // Masquer/afficher les boutons
+      btnLeft!.style.opacity = currentIndex === 0 ? "0.3" : "1";
+      btnLeft!.style.pointerEvents = currentIndex === 0 ? "none" : "auto";
+      btnRight!.style.opacity = currentIndex >= maxIndex ? "0.3" : "1";
+      btnRight!.style.pointerEvents =
+        currentIndex >= maxIndex ? "none" : "auto";
+    }
+
+    // Navigation vers la gauche
+    btnLeft.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex -= filmsPerView;
+        if (currentIndex < 0) currentIndex = 0;
+        updatePosition();
+      }
+    });
+
+    // Navigation vers la droite
+    btnRight.addEventListener("click", () => {
+      if (currentIndex < maxIndex) {
+        currentIndex += filmsPerView;
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+        updatePosition();
+      }
+    });
+    // Position initiale
+    updatePosition();
+  }
+
+  // Initialiser le carousel quand le DOM est chargé
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCarousel);
+  } else {
+    initCarousel();
+  }
+
+  // Petit script qui récupère chaque div des affiches pour mettre un lien directement sur l'image
+  const filmItems = document.querySelectorAll("#filmsTrack > div");
+  filmItems.forEach((item) => {
+    const img = item.querySelector("img");
+    const link = item.querySelector("a");
+    if (img && link) {
+      img.style.cursor = "pointer";
+      img.addEventListener("click", () => {
+        window.location.href = link.href;
+      });
+    }
+  });
+</script>
