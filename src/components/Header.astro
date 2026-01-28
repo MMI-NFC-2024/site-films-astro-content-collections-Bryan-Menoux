@@ -1,9 +1,11 @@
 <header
-  class="flex items-center justify-between px-12 text-white fixed top-0 w-full z-10 h-18"
+  class="flex items-center justify-between px-12 text-white fixed top-0 w-full z-10 h-18 "
+  style="mix-blend-mode: difference; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(10px);"
 >
-  <a href="/" class="text-2xl">AbsoluteCinema</a>
-  <nav>
-    <ul class="flex space-x-6 ml-32">
+  <div class="absolute inset-0 bg-linear-to-b from-black/10 to-black/0 pointer-events-none"></div>
+  <a href="/" class="text-2xl relative z-10">AbsoluteCinema</a>
+  <nav class="relative z-10">
+    <ul class="flex space-x-6 ml-32 font-bold">
       <li>
         <a href="/films" class="hover:underline py-4 px-2">Films</a>
       </li>

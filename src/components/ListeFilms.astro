@@ -14,7 +14,7 @@ const { filmsRealised, filmsProduced, filmsActedIn } = Astro.props;
 {
   filmsRealised.map((film, index) => (
     <>
-      {index === 0 ? "Films réalisés :" : ""}
+      {index === 0 ? "Films réalisés : " : ""}
       <LinkFilms film={film} />
       {index < filmsRealised.length - 1 ? ", " : ""}
     </>
@@ -23,7 +23,7 @@ const { filmsRealised, filmsProduced, filmsActedIn } = Astro.props;
 {
   filmsProduced.map((film, index) => (
     <>
-      {index === 0 ? "Films produits :" : ""}
+      {index === 0 ? "Films produits : " : ""}
       <LinkFilms film={film} />
       {index < filmsProduced.length - 1 ? ", " : ""}
     </>
@@ -32,7 +32,7 @@ const { filmsRealised, filmsProduced, filmsActedIn } = Astro.props;
 {
   filmsActedIn.map((film, index) => (
     <>
-      {index === 0 ? "Films joués :" : ""}
+      {index === 0 ? "Films joués : " : ""}
       <LinkFilms film={film} />
       {index < filmsActedIn.length - 1 ? ", " : ""}
     </>
