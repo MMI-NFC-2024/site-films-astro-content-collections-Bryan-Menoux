@@ -20,8 +20,7 @@ const { film } = Astro.props;
 const { Content } = await render(film);
 
 const realisateur = await getEntry(film.data.realisateur);
-const acteurs = await getEntries(film.data.roles?.map(role => role.acteur) || []);
-console.log(acteurs);
+const roles = film.data.roles || [];
 ---
 
 <Layout title={film.data.titre}>
@@ -30,7 +29,7 @@ console.log(acteurs);
     <div class="container mx-auto px-4">
       <a
         href="/films"
-        class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8"
+        class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8 hover:underline"
       >
         ← Retourner aux films
       </a>
@@ -68,17 +67,10 @@ console.log(acteurs);
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <!-- Synopsis -->
       <div
-        class:list={{ 'md:col-span-1!': !!realisateur }} class="md:col-span-2 bg-white rounded-lg shadow-sm border border-gray-200 py-8 px-6"
+        class="bg-white rounded-lg shadow-sm border border-gray-200 py-8 px-6 md:col-span-2"
       >
         <h2 class="text-xl font-semibold text-gray-900 mb-3">Synopsis</h2>
         <p class="text-gray-700 leading-relaxed">{film.data.synopsis}</p>
-      </div>
-
-      <!-- Réalisateur -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h3 class="text-lg font-medium text-gray-900 mb-2">Réalisateur</h3>
-        <p class="text-gray-700">
-          <a href={`/personnes/${realisateur.id}`}>{realisateur.data.nom}</a>
       </div>
 
       <!-- Date de sortie -->
@@ -92,14 +84,52 @@ console.log(acteurs);
         <h3 class="text-lg font-medium text-gray-900 mb-2">Pays d'origine</h3>
         <p class="text-gray-700">{film.data.pays_origine?.join(", ")}</p>
       </div>
-      <!-- Producteurs -->
+
+      <div class="grid grid-cols-2 gap-8">
+        <!-- Réalisateur -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <h3 class="text-lg font-medium text-gray-900 mb-2">Réalisateur</h3>
+          <p class="text-gray-700">
+            <LinkPersonne personne={realisateur} />
+          </p>
+        </div>
+        <!-- Producteurs -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <h3 class="text-lg font-medium text-gray-900 mb-2">Producteurs</h3>
+          <p class="text-gray-700">
+            {
+              (await getEntries(film.data.producteurs))
+                .map((prod) => <LinkPersonne personne={prod} />)
+                .reduce((prev, curr, currentIndex) => [
+                  prev,
+                  currentIndex < film.data.producteurs!.length - 1
+                    ? ", "
+                    : " et ",
+                  curr,
+                ])
+            }
+          </p>
+        </div>
+      </div>
+
+      <!-- Rôles -->
       <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h3 class="text-lg font-medium text-gray-900 mb-2">Producteurs</h3>
-        <p class="text-gray-700">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Rôles</h3>
+        <ul class="list-disc list-inside space-y-2">
           {
-            ((await getEntries(film.data.producteurs)).map(prod => (<LinkPersonne personne={prod} />)).reduce((prev, curr, currentIndex) => [prev, currentIndex < film.data.producteurs!.length - 1 ? ", " : " et ", curr]))
+            await Promise.all(
+              roles.map(async (role) => {
+                const acteur = await getEntry(role.acteur);
+                return (
+                  <li>
+                    <LinkPersonne personne={acteur} /> joue le rôle de{" "}
+                    <span class="font-semibold">{role.nom_role}</span>
+                  </li>
+                );
+              }),
+            )
           }
-        </p>
+        </ul>
       </div>
     </div>
   </div>

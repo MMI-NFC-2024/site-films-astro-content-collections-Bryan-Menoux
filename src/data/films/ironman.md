@@ -12,6 +12,11 @@ pays_origine:
 producteurs:
   - kevin-feige
   - avi-arad
+roles:
+  - acteur: robert-downey-jr
+    nom_role: "Tony Stark / Iron Man"
+  - acteur: gwyneth-paltrow
+    nom_role: pepper potts
 ---
 
 # Iron Man

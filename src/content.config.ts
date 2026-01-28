@@ -11,7 +11,7 @@ const personnes = defineCollection({
     age: z.number(),
     dateDeNaissance: date(),
     image: image().optional(),
-    professions: z.array(z.enum(["acteur", "réalisateur", "scénariste", "producteur"])).optional(),
+    professions: z.array(z.enum(["acteur", "actrice", "réalisatrice", "réalisateur", "scénariste", "producteur", "productrice"])).optional(),
   })
 });
 

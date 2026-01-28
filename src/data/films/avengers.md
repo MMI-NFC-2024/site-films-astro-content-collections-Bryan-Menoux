@@ -12,7 +12,6 @@ pays_origine:
 producteurs:
   - kevin-feige
 
-
 ---
 
 # The Avengers
