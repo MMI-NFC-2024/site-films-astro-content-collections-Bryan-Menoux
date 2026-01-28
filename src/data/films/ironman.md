@@ -17,6 +17,8 @@ roles:
     nom_role: "Tony Stark / Iron Man"
   - acteur: gwyneth-paltrow
     nom_role: pepper potts
+  - acteur: terrence-howard
+    nom_role: "James Rhodes"
 ---
 
 # Iron Man

@@ -3,8 +3,8 @@ nom: Leonardo DiCaprio
 role: Acteur principal
 description: Icône du cinéma hollywoodien, connu pour ses rôles dans des films comme Titanic et The Revenant.
 age: 52
-dateDeNaissance: 1994-11-11
 image: ../../assets/images/personnes/dicaprio.jpg
+dateDeNaissance: 1994-11-11
 professions: ["acteur","scénariste", "réalisateur"]
 ---
 

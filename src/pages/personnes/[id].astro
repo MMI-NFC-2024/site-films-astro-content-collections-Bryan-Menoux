@@ -4,6 +4,10 @@ import Layout from "../../layouts/Layout.astro";
 import { formatDate } from "../../helper.ts";
 import Image from "astro/components/Image.astro";
 
+import placeHolder from "../../assets/images/placeholder.png";
+
+console.log(placeHolder);
+
 export async function getStaticPaths() {
   const personnes = await getCollection("personnes");
   return personnes.map((personne) => ({
@@ -18,10 +22,20 @@ const {Content} = await render(personne);
 
 
 <Layout title={personne.data.nom}>
-    <a href="/personnes">Retourner aux acteurs</a>
+    <a
+        href="/personnes"
+        class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8 hover:underline"
+      >
+        ← Retourner aux personnes
+      </a>
     <h1>{personne.data.nom}</h1>
+    <Image 
+        src={personne.data.image ? personne.data.image : placeHolder} 
+        alt={personne.data.nom} 
+        width="300" 
+        height="450"
+    />
     <p>{formatDate(personne.data.dateDeNaissance)}</p>
-    {personne.data.image && <Image src={personne.data.image} alt={personne.data.nom} width={300} />}
     <p>{personne.data.professions?.join(", ")}</p>
     <Content />
 </Layout>

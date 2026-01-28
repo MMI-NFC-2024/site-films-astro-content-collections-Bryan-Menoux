@@ -11,6 +11,13 @@ pays_origine:
   - États-Unis
 producteurs:
   - kevin-feige
+roles:
+  - acteur: robert-downey-jr
+    nom_role: "Tony Stark / Iron Man"
+  - acteur: chris-evans
+    nom_role: "Steve Rogers / Captain America"
+  - acteur: mark-ruffalo
+    nom_role: "Bruce Banner / Hulk"
 
 ---
 

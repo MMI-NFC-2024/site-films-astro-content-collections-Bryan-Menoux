@@ -11,6 +11,13 @@ pays_origine:
   - États-Unis
 producteurs:
   - kevin-feige
+roles:
+  - acteur: chadwick-boseman
+    nom_role: "T'Challa / Black Panther"
+  - acteur: michael-b-jordan
+    nom_role: "N'Jadaka / Killmonger"
+  - acteur: lupita-nyongo
+    nom_role: Nakia
 ---
 
 # Black Panther

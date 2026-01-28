@@ -11,6 +11,13 @@ pays_origine:
   - États-Unis
 producteurs:
   - kevin-feige
+roles:
+  - acteur: chris-pratt
+    nom_role: "Peter Quill / Star-Lord"
+  - acteur: zoe-saldana
+    nom_role: Gamora
+  - acteur: dave-bautista
+    nom_role: Drax
 ---
 
 # Guardians of the Galaxy

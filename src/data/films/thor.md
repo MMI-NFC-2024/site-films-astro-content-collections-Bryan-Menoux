@@ -11,6 +11,13 @@ pays_origine:
   - États-Unis
 producteurs:
   - kevin-feige
+roles:
+  - acteur: chris-hemsworth
+    nom_role: Thor
+  - acteur: natalie-portman
+    nom_role: "Jane Foster"
+  - acteur: tom-hiddleston
+    nom_role: Loki
 ---
 
 # Thor

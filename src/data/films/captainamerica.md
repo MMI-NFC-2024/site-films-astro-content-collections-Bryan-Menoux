@@ -11,6 +11,13 @@ pays_origine:
   - États-Unis
 producteurs:
   - kevin-feige
+roles:
+  - acteur: chris-evans
+    nom_role: "Steve Rogers / Captain America"
+  - acteur: hugo-weaving
+    nom_role: "Red Skull"
+  - acteur: hayley-atwell
+    nom_role: "Peggy Carter"
 ---
 
 # Captain America: The First Avenger
