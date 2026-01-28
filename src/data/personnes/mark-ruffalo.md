@@ -4,6 +4,7 @@ role: Acteur
 description: "Acteur américain reconnu pour son interprétation de Bruce Banner / Hulk dans le Marvel Cinematic Universe et ses rôles dans des films dramatiques et indépendants."
 age: 56
 dateDeNaissance: 1967-11-22
+image: ../../assets/images/personnes/markruffalo.jpg
 professions:
   - acteur
   - producteur

@@ -4,6 +4,7 @@ role: Acteur
 description: "Acteur américain connu pour son interprétation de Drax dans Guardians of the Galaxy et ses rôles dans des films d'action et de lutte."
 age: 55
 dateDeNaissance: 1969-01-18
+image: ../../assets/images/personnes/davebautista.jpg
 professions:
   - acteur
   - lutteur professionnel

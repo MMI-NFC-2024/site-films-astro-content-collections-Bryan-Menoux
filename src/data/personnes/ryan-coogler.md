@@ -4,6 +4,7 @@ role: Réalisateur et scénariste
 description: Réalisateur et scénariste américain reconnu pour ses films engagés et son travail au sein du cinéma contemporain, notamment Black Panther.
 age: 37
 dateDeNaissance: 1986-05-23
+image: ../../assets/images/personnes/ryancoogler.jpg
 professions:
   - réalisateur
   - scénariste

@@ -4,6 +4,7 @@ role: Actrice
 description: "Actrice américaine reconnue pour ses rôles au cinéma et pour son interprétation de Pepper Potts dans le Marvel Cinematic Universe."
 age: 51
 dateDeNaissance: 1972-09-27
+image: ../../assets/images/personnes/gwynethpaltrow.jpg
 professions:
   - actrice
   - productrice

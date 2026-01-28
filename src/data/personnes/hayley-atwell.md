@@ -4,6 +4,7 @@ role: Actrice
 description: "Actrice britannique connue pour son interprétation de Peggy Carter dans le Marvel Cinematic Universe et ses rôles dans des films historiques et dramatiques."
 age: 42
 dateDeNaissance: 1982-04-05
+image: ../../assets/images/personnes/hayleyatwell.jpg
 professions:
   - actrice
 ---

@@ -4,6 +4,7 @@ role: Acteur
 description: "Acteur américain connu pour son interprétation de T'Challa / Black Panther dans le Marvel Cinematic Universe et ses rôles dans des films historiques et dramatiques."
 age: 43
 dateDeNaissance: 1976-11-29
+image: ../../assets/images/personnes/chadwickboseman.jpg
 professions:
   - acteur
 ---

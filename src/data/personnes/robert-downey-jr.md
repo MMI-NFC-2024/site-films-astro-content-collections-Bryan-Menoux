@@ -4,6 +4,7 @@ role: Acteur
 description: "Acteur américain emblématique connu pour sa polyvalence et pour son interprétation de Tony Stark dans le Marvel Cinematic Universe."
 age: 58
 dateDeNaissance: 1965-04-04
+image: ../../assets/images/personnes/robertdowneyjr.jpg
 professions:
   - acteur
   - producteur

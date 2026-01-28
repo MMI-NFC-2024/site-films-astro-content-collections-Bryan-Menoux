@@ -6,8 +6,6 @@ import Image from "astro/components/Image.astro";
 
 import placeHolder from "../../assets/images/placeholder.png";
 
-console.log(placeHolder);
-
 export async function getStaticPaths() {
   const personnes = await getCollection("personnes");
   return personnes.map((personne) => ({

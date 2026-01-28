@@ -4,6 +4,7 @@ role: Acteur
 description: "Acteur australien connu pour son interprétation du Red Skull dans Captain America et ses rôles dans des films de fantasy et de science-fiction."
 age: 64
 dateDeNaissance: 1960-04-04
+image: ../../assets/images/personnes/hugoweaving.jpg
 professions:
   - acteur
 ---

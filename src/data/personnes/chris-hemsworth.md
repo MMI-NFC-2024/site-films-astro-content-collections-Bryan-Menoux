@@ -4,6 +4,7 @@ role: Acteur
 description: "Acteur australien connu pour son interprétation de Thor dans le Marvel Cinematic Universe et ses rôles dans des films d'action et d'aventure."
 age: 41
 dateDeNaissance: 1983-08-11
+image: ../../assets/images/personnes/chrishemsworth.jpg
 professions:
   - acteur
   - producteur

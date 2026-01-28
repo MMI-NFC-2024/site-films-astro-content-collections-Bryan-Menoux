@@ -4,6 +4,7 @@ role: Réalisateur et producteur
 description: "Réalisateur et producteur américain connu pour son travail sur des films d’aventure, de science-fiction et de super-héros, notamment Captain America: First Avenger."
 age: 74
 dateDeNaissance: 1950-05-13
+image: ../../assets/images/personnes/joejohnston.jpg
 professions:
   - réalisateur
   - producteur

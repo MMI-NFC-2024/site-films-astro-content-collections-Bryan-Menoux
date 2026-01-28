@@ -4,6 +4,7 @@ role: Acteur
 description: "Acteur américain connu pour son interprétation de Peter Quill / Star-Lord dans Guardians of the Galaxy et ses rôles dans des comédies et films d'aventure."
 age: 45
 dateDeNaissance: 1979-06-21
+image: ../../assets/images/personnes/chrispratt.jpg
 professions:
   - acteur
   - producteur

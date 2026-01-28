@@ -4,6 +4,7 @@ role: Réalisateur, acteur et scénariste
 description: "Acteur, réalisateur et scénariste britannique reconnu pour ses adaptations de Shakespeare et ses films mêlant théâtre, cinéma et grandes productions, notamment Thor."
 age: 64
 dateDeNaissance: 1960-12-10
+image: ../../assets/images/personnes/kennethbranagh.jpg
 professions:
   - réalisateur
   - scénariste

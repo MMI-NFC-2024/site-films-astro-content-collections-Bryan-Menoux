@@ -4,6 +4,7 @@ role: Réalisateur et scénariste
 description: Réalisateur, scénariste et producteur américain, connu pour son travail sur des séries cultes et des films de super-héros, notamment The Avengers.
 age: 59
 dateDeNaissance: 1964-06-23
+image: ../../assets/images/personnes/josswhedon.jpg
 professions:
   - réalisateur
   - scénariste

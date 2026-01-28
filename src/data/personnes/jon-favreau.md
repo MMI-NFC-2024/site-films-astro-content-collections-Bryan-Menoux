@@ -4,6 +4,7 @@ role: Réalisateur, scénariste et producteur
 description: "Réalisateur, scénariste et producteur américain connu pour son rôle clé dans le lancement du Marvel Cinematic Universe et pour ses films mêlant divertissement et innovation, notamment Iron Man."
 age: 59
 dateDeNaissance: 1966-10-19
+image: ../../assets/images/personnes/jonfavreau.jpg
 professions:
   - réalisateur
   - scénariste

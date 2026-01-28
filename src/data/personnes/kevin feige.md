@@ -4,7 +4,7 @@ role: Producteur exécutif
 description: Président de Marvel Studios et architecte de l'Univers Cinématographique Marvel, responsable de films à succès comme Avengers et Black Panther.
 age: 51
 dateDeNaissance: 1973-06-02
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/personnes/kevinfeige.jpg
 professions: ["producteur"]
 ---
 

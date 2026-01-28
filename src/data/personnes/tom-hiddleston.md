@@ -4,6 +4,7 @@ role: Acteur
 description: "Acteur britannique connu pour son interprétation de Loki dans le Marvel Cinematic Universe et ses rôles dans des films dramatiques et de théâtre."
 age: 43
 dateDeNaissance: 1981-02-09
+image: ../../assets/images/personnes/tomhiddleston.jpg
 professions:
   - acteur
   - producteur

@@ -4,6 +4,7 @@ role: Producteur exécutif
 description: Producteur de films et ancien président de Marvel Studios, connu pour avoir lancé l'univers cinématographique Marvel.
 age: 78
 dateDeNaissance: 1948-08-01
+image: ../../assets/images/personnes/aviarad.jpg
 professions: 
     - producteur
 ---

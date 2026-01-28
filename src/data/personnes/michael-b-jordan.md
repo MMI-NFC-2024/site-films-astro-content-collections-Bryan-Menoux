@@ -4,6 +4,7 @@ role: Acteur
 description: "Acteur américain connu pour son interprétation de N'Jadaka / Killmonger dans Black Panther et ses rôles dans des films d'action et dramatiques."
 age: 37
 dateDeNaissance: 1987-02-09
+image: ../../assets/images/personnes/michaelbjordan.jpg
 professions:
   - acteur
   - producteur

@@ -4,6 +4,7 @@ role: Actrice
 description: "Actrice américaine d'origine dominicaine connue pour son interprétation de Gamora dans Guardians of the Galaxy et ses rôles dans des films de science-fiction."
 age: 45
 dateDeNaissance: 1978-06-19
+image: ../../assets/images/personnes/zoesaldana.jpg
 professions:
   - actrice
   - producteur

@@ -4,6 +4,7 @@ role: Actrice
 description: "Actrice israélienne-américaine connue pour son interprétation de Jane Foster dans Thor et ses rôles dans des films dramatiques et indépendants."
 age: 43
 dateDeNaissance: 1981-06-09
+image: ../../assets/images/personnes/natalieportman.jpg
 professions:
   - actrice
   - producteur

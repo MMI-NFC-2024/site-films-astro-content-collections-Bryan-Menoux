@@ -4,6 +4,7 @@ role: Acteur
 description: "Acteur américain connu pour son interprétation de Captain America dans le Marvel Cinematic Universe et ses rôles dans des films d'action et de comédie."
 age: 45
 dateDeNaissance: 1981-06-13
+image: ../../assets/images/personnes/chrisevans.webp
 professions:
   - acteur
   - producteur

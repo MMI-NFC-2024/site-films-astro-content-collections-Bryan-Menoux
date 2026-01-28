@@ -4,6 +4,7 @@ role: Réalisateur et scénariste
 description: "Réalisateur, scénariste et producteur américain connu pour son style décalé et son travail sur des films de super-héros, notamment Guardians of the Galaxy."
 age: 59
 dateDeNaissance: 1966-08-05
+image: ../../assets/images/personnes/jamesgunn.jpg
 professions:
   - réalisateur
   - scénariste

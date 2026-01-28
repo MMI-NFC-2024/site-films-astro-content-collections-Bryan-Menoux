@@ -4,6 +4,7 @@ role: Actrice
 description: "Actrice kényane-mexicaine connue pour son interprétation de Nakia dans Black Panther et ses rôles dans des films dramatiques et fantastiques."
 age: 41
 dateDeNaissance: 1983-03-01
+image: ../../assets/images/personnes/lupitanyongo.jpg
 professions:
   - actrice
   - productrice

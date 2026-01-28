@@ -4,6 +4,7 @@ role: Acteur
 description: "Acteur américain connu pour son interprétation de James Rhodes dans Iron Man et ses rôles dans des films dramatiques et indépendants."
 age: 55
 dateDeNaissance: 1969-03-11
+image: ../../assets/images/personnes/terrencehoward.jpg
 professions:
   - acteur
   - chanteur
