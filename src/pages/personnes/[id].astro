@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 }
 
 const { personne } = Astro.props;
-const {Content} = await render(personne);
+const { Content } = await render(personne);
 
 const films = await getCollection("films");
 let filmsRealised: any[] = [];
@@ -27,17 +27,22 @@ films.forEach((film) => {
   // Si films réalisés, ajouter à la liste des films réalisés
   if (film.data.realisateur?.id === personne.id) {
     filmsRealised.push(film);
-  };
+  }
   // Si films produits, ajouter à la liste des films produits
-  if (film.data.producteurs?.some(prod => prod.id === personne.id)) {
+  if (film.data.producteurs?.some((prod) => prod.id === personne.id)) {
     filmsProduced.push(film);
-  };
+  }
   // Si films où la personne a joué, ajouter à la liste des films joués
-  if (film.data.roles?.some(role => role.acteur.id === personne.id)) {
+  if (film.data.roles?.some((role) => role.acteur.id === personne.id)) {
     filmsActedIn.push(film);
-  };
-
+  }
 });
+
+// const filmActedIn2 = await getCollection("films", (film) =>
+//   film.data.roles?.some(role => role.acteur.id === personne.id)
+// );
+
+// const filmActedIn3 = (await getCollection("films")).flatMap((film) => film.data.roles?.filter(role => role.acteur.id === personne.id)?.map(({nom_role}) => ({nom_role, film})))
 ---
 
 <Layout title={personne.data.nom}>
@@ -94,7 +99,9 @@ films.forEach((film) => {
 
       <!-- Date de naissance -->
       <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h3 class="text-lg font-medium text-gray-900 mb-2">Date de naissance</h3>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">
+          Date de naissance
+        </h3>
         <p class="text-gray-700">{formatDate(personne.data.dateDeNaissance)}</p>
       </div>
 
@@ -105,16 +112,38 @@ films.forEach((film) => {
       </div>
 
       <!-- Films associés -->
-      <div class="bg-white text-gray-800 rounded-lg shadow-sm border border-gray-200 p-6 md:col-span-2">
+      <div
+        class="bg-white text-gray-800 rounded-lg shadow-sm border border-gray-200 p-6 md:col-span-2"
+      >
         <h3 class="text-lg font-medium text-gray-900 mb-4">Films associés</h3>
-        <ListeFilms personne={personne} filmsRealised={filmsRealised} filmsProduced={filmsProduced} filmsActedIn={filmsActedIn} />
+        <ListeFilms
+          personne={personne}
+          filmsRealised={filmsRealised}
+          filmsProduced={filmsProduced}
+          filmsActedIn={filmsActedIn}
+        />
+        <!-- 
+        {
+          filmActedIn2.map((film) => (
+            <>
+              A joué le rôle de {
+                film.data.roles
+                  ?.filter(role => role.acteur.id === personne.id)
+                  .map(({nom_role})=> nom_role)
+              } dans {film.data.titre}
+            </>
+          ))
+        } -->
       </div>
     </div>
   </div>
 
   <!-- Contenu Complet du markdown -->
   <div class="container mx-auto px-4">
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-gray-800">
+    <div
+      class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-gray-800"
+    >
       <Content />
     </div>
   </div>
+</Layout>
