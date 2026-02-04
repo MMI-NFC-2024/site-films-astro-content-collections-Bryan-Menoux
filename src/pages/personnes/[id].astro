@@ -38,11 +38,11 @@ films.forEach((film) => {
   }
 });
 
-// const filmActedIn2 = await getCollection("films", (film) =>
-//   film.data.roles?.some(role => role.acteur.id === personne.id)
-// );
+const filmActedIn2 = await getCollection("films", (film) =>
+  film.data.roles?.some(role => role.acteur.id === personne.id)
+);
 
-// const filmActedIn3 = (await getCollection("films")).flatMap((film) => film.data.roles?.filter(role => role.acteur.id === personne.id)?.map(({nom_role}) => ({nom_role, film})))
+const filmActedIn3 = (await getCollection("films")).flatMap((film) => film.data.roles?.filter(role => role.acteur.id === personne.id)?.map(({nom_role}) => ({nom_role, film})))
 ---
 
 <Layout title={personne.data.nom}>
@@ -139,7 +139,7 @@ films.forEach((film) => {
   </div>
 
   <!-- Contenu Complet du markdown -->
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 mb-16">
     <div
       class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-gray-800"
     >
